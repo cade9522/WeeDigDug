@@ -608,7 +608,7 @@ collision_adjust
         STRB r5, [r4]			;store back into the memory location
         MOV r1, r5, LSL #2		;create offset to get the associated LED pattern 
         LDR r3, =LED_pattern
-        LDR	r0, [r3, r1]	
+        LDR r0, [r3, r1]	
         BL illuminateLEDS		;illuminate the number of lives left
 KLSN	MOV r5, #1
         B KLSN2
@@ -1089,7 +1089,7 @@ LFTMVE	CMP r2, #1			;check col, update if applicable
         BEQ SCRETEN
         B UPDATE
 RGHT	CMP r0, #4			;check if 3 stored
-        BNE	UPDATE
+        BNE UPDATE
         CMP r3, #0x3E
         BEQ RGTMVE
         MOV r3, #0x3E			;store new char
@@ -1492,7 +1492,7 @@ CHANGE	LDR r11, =0xE0008008		;load current value from Timer 1
         MOV r3, #1			;move down
         ADD r1, r1, #1
         B STRdir
-C1L		MOV r3, #2		;move left
+C1L	MOV r3, #2		;move left
         SUB r2, r2, #1
         B STRdir
 CHNG1	CMP r0, #6			;right/down
@@ -1502,7 +1502,7 @@ CHNG1	CMP r0, #6			;right/down
         MOV r3, #1
         ADD r1, r1, #1
         B STRdir
-C2R		MOV r3, #3
+C2R	MOV r3, #3
         ADD r2, r2, #1
         B STRdir
 CHNG2	CMP r0, #9			;left/up
@@ -1512,7 +1512,7 @@ CHNG2	CMP r0, #9			;left/up
         MOV r3, #0
         SUB r1, r1, #1
         B STRdir
-C3L		MOV r3, #2
+C3L	MOV r3, #2
         SUB r2, r2, #1
         B STRdir
 CHNG3	CMP r0, #10			;right/up
@@ -1522,7 +1522,7 @@ CHNG3	CMP r0, #10			;right/up
         MOV r3, #0
         SUB r1, r1, #1
         B STRdir
-C3R		MOV r3, #3
+C3R	MOV r3, #3
         ADD r2, r2, #1
         B STRdir
 CHNG4	CMP r0, #7			;left/right/down				
@@ -1532,12 +1532,12 @@ CHNG4	CMP r0, #7			;left/right/down
         MOV r3, #1
         ADD r1, r1, #1
         B STRdir
-C4R		CMP r12, #1
+C4R	CMP r12, #1
         BNE C4L
         MOV r3, #3
         ADD r2, r2, #1
         B STRdir
-C4L		MOV r3, #2
+C4L	MOV r3, #2
         SUB r2, r2, #1
         B STRdir
 CHNG5	CMP r0, #11			;left/right/up
@@ -1547,12 +1547,12 @@ CHNG5	CMP r0, #11			;left/right/up
         MOV r3, #0
         SUB r1, r1, #1
         B STRdir
-C5R		CMP r12, #1
+C5R	CMP r12, #1
         BNE C5L
         MOV r3, #3
         ADD r2, r2, #1
         B STRdir
-C5L		MOV r3, #2
+C5L	MOV r3, #2
         SUB r2, r2, #1
         B STRdir
 CHNG6	CMP r0, #13			;left/down/up
@@ -1562,12 +1562,12 @@ CHNG6	CMP r0, #13			;left/down/up
         MOV r3, #0
         SUB r1, r1, #1
         B STRdir
-C6D		CMP r12, #1
+C6D	CMP r12, #1
         BNE C6L
         MOV r3, #1
         ADD r1, r1, #1
         B STRdir
-C6L		MOV r3, #2
+C6L	MOV r3, #2
         SUB r2, r2, #1
         B STRdir
 CHNG7	CMP r0, #14			;right/down/up
@@ -1577,12 +1577,12 @@ CHNG7	CMP r0, #14			;right/down/up
         MOV r3, #0
         SUB r1, r1, #1
         B STRdir
-C7D		CMP r12, #1
+C7D	CMP r12, #1
         BNE C7R
         MOV r3, #1
         ADD r1, r1, #1
         B STRdir
-C7R		MOV r3, #3
+C7R	MOV r3, #3
         ADD r2, r2, #1
         B STRdir
 CHNG8	CMP r0, #15			;all directions available
@@ -1592,17 +1592,17 @@ CHNG8	CMP r0, #15			;all directions available
         MOV r3, #0
         SUB r1, r1, #1
         B STRdir
-C8D		CMP r12, #1
+C8D	CMP r12, #1
         BNE C8R
         MOV r3, #1
         ADD r1, r1, #1
         B STRdir
-C8R		CMP r12, #2
+C8R	CMP r12, #2
         BNE C8L
         MOV r3, #3
         ADD r2, r2, #1
         B STRdir
-C8L		MOV r3, #2
+C8L	MOV r3, #2
         SUB r2, r2, #1
         B STRdir
 

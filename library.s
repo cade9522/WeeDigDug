@@ -135,28 +135,28 @@ Illuminate_RGB_LED
 divide
         STMFD SP!,{lr}		
 DVND	CMP r0, #0			;check to see if dividend is positive
-        BGE	DVSR			;if so, branch to check the same for the divisor
+        BGE DVSR			;if so, branch to check the same for the divisor
         NEG r0, r0			;else, negate the value
         MOV r6, #1			;record a value of 1 in r6 for a later check
 DVSR	CMP r1, #0			;check to see if divisor is positive
-        BGE	main			;if so, branch to check the same for the divisor
+        BGE main			;if so, branch to check the same for the divisor
         NEG r1, r1			;else, negate the value
         MOV r7, #1			;record a value of 1 in r7 for a later check
 main	MOV r2, #15			;intialize counter for 15-bit integer
-        MOV	r3, #0			;intialize quotient to 0
+        MOV r3, #0			;intialize quotient to 0
         MOV r1, r1, LSL #15	        ;Logical Left Shift divisor by 15 places
         MOV r4, r0			;set remainder = dividend
-        B	LOOP			;Unconditionally Branch to the start of the loop
+        B LOOP		        	;Unconditionally Branch to the start of the loop
                                         ;passing over the labels in between
 NEGv	MOV r4, r5			;restore remainder to backup value
         MOV r3, r3, LSL #1	        ;Logical Left Shift in a value of 0
         MOV r1, r1, LSR #1	        ;Right Shift in a value of 0
-        B	CNTR			;Unconditionally Branch to the Counter label
+        B   CNTR			;Unconditionally Branch to the Counter label
 DCNT	SUB r2, r2, #1		        ;decrement counter
 LOOP	MOV r5, r4			;initialize r5 as a backup of r4
-        SUB	r4, r4, r1		;set remainder = remainder - divisor
-        CMP	r4, #0			;compare the remainder to 0
-        BLT	NEGv			;if remainder is negative, branch to Negative Value label
+        SUB r4, r4, r1	        	;set remainder = remainder - divisor
+        CMP r4, #0			;compare the remainder to 0
+        BLT NEGv			;if remainder is negative, branch to Negative Value label
                                         ;else, continue onto the Positive Value label
 POSv	MOV r3, r3, LSL #1	        ;Logical Left Shift in a value of 1
         ADD r3, r3, #1
@@ -165,10 +165,10 @@ CNTR	CMP r2, #0			;is the counter greater than 0?
         BGT DCNT			;if so, loop back to the start
                                         ;if not, continue on to the final checks
 CHK1	CMP r6, #1			;check if initial dividend was negative
-        BNE	CHK2			;if not, branch to check the divisor
+        BNE CHK2			;if not, branch to check the divisor
         NEG r3, r3			;if so, negate the value
 CHK2	CMP r7, #1			;check if initial dividend was negative
-        BNE	STOR			;if not, branch to the end
+        BNE STOR			;if not, branch to the end
         NEG r3, r3			;if so, negate the value
 STOR	MOV r0, r3			;store the quotient in r0
         MOV r1, r4			;store the remainder in r1
