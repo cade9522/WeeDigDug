@@ -1,7 +1,7 @@
 # WeeDigDug
 **An ASCII twist on the classic Atari game, made entirely in ARM assembly language!**
 
-Please read the accompanying documentation detailing the instructions of use and primary goal of the program. Thank you!
+Please read the accompanying documentation (WeeDigDug) detailing the instructions of use and primary goal of the program. Thank you!
 
 ---
 
